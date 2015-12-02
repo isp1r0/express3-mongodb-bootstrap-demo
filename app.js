@@ -138,10 +138,16 @@ app.all('*', welcome.not_found);
 
 // Start Server w/ DB Connection
 
+app.require('https');
 var db = mongoose.connection;
+https.globalAgent.options.secureProtocol = 'SSLv3_client_method';
+var options = {
+  key: fs.readFileSync('test/fixtures/keys/agent2-key.pem'),
+  cert: fs.readFileSync('test/fixtures/keys/agent2-cert.pem')
+};
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
-  http.createServer(app).listen(app.get('port'), function(){
+  https.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
   });
 });
