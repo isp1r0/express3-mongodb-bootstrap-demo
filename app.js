@@ -39,7 +39,8 @@ app.use(session({
   key: "sessionId",
   cookie: {
     domain: '.example.com',
-    path: '/admin'
+    path: '/admin',
+    secure: false
   }
 }));
 
