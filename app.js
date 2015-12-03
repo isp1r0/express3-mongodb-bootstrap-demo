@@ -34,6 +34,8 @@ app.use(passport.session());
 
 // Helpers
 
+var session = require('express-session');
+
 app.use(session({
   secret:"s3Cur3",
   key: "sessionId",
