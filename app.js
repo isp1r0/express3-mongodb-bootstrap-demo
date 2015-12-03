@@ -42,7 +42,7 @@ app.use(session({
   cookie: {
     domain: '.example.com',
     path: '/admin',
-    secure: false
+    secure: true
   }
 }));
 
