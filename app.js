@@ -34,6 +34,17 @@ app.use(passport.session());
 
 // Helpers
 
+app.use(session({
+  secret:"s3Cur3",
+  key: "sessionId",
+  cookie: {
+    domain: '.example.com',
+    path: '/admin'
+  }
+}));
+
+session.cookie.secure = false;
+
 app.use(function(req, res, next){
   res.locals.userIsAuthenticated = req.isAuthenticated(); // check for user authentication
   res.locals.user = req.user; // make user available in all views

@@ -1,0 +1,14 @@
+Index: app.js
+===================================================================
+--- app.js
++++ app.js
+@@ -14,8 +14,9 @@
+ var MongoStore = require('connect-mongo')(express);
+ var settings = require('./settings');
+ 
+ var app = express();
++app.disable('X-Powered-By');
+ 
+ // all environments
+ app.configure(function(){
+     app.set('port', process.env.PORT || 3001);
